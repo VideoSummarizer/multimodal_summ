@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 
 from consts import global_consts as gc
-from transformer.Layers import EncoderLayer
+from transformer.Layers import translation_lm
 from transformer.Modules import PositionalEncoder
 from transformer.SubLayers import Norm
 
@@ -18,7 +18,7 @@ def get_pad_mask(seq):
     non_pad_mask = torch.abs(seq).sum(-1).eq(0)
     return non_pad_mask.unsqueeze(-1)
 
-class TransformerEncoder(nn.Module):
+class translation_lm(nn.Module):
     def __init__(self, d_model, n_layers, dropout):
         super().__init__()
         self.n_layers = n_layers
